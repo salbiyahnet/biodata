@@ -1,96 +1,62 @@
 <!DOCTYPE html>
-<html lang="id">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Biodata</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
-        nav { background: #333; padding: 10px; text-align: center; }
-        nav a { color: white; margin: 0 15px; text-decoration: none; }
-        .section { padding: 40px; text-align: center; }
-        .container { display: flex; justify-content: space-between; align-items: center; }
-        .bio-box { display: flex; flex-wrap: wrap; justify-content: center; }
-        .box { width: 30%; padding: 20px; margin: 10px; border: 1px solid #000; }
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        table, th, td { border: 1px solid black; padding: 10px; }
-    </style>
+    <title>Halaman Dengan Tabel</title>
 </head>
 <body>
     <!-- Section 1: Menu -->
-    <nav>
-        <a href="#about">Tentang</a>
-        <a href="#biodata">Biodata</a>
-        <a href="#portfolio">Portofolio</a>
-    </nav>
-
-    <!-- Section 2: Judul dan Gambar -->
-    <section class="section container" id="about">
-        <div>
-            <h1>Selamat Datang di Profil Saya</h1>
-            <p>Ini adalah halaman biodata saya.</p>
-        </div>
-        <div>
-            <img src="profile.jpg" alt="Foto Profil" width="200">
-        </div>
-    </section>
-
-    <!-- Section 3: Biodata -->
-    <section class="section" id="biodata">
-        <h2>Biodata</h2>
-        <table>
-            <tr>
-                <td>Nama</td>
-                <td>Eko Wahyu</td>
-            </tr>
-            <tr>
-                <td>Usia</td>
-                <td>35 Tahun</td>
-            </tr>
-            <tr>
-                <td>Pekerjaan</td>
-                <td>Web Developer</td>
-            </tr>
-            <tr>
-                <td>Alamat</td>
-                <td>Malang, Indonesia</td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td>eko.salbiah@email.com</td>
-            </tr>
-            <tr>
-                <td>Telepon</td>
-                <td>+62 813-3612-8448</td>
-            </tr>
-        </table>
-    </section>
-
+    <table border="1" width="100%">
+        <tr>
+            <td align="center"><a href="#">Home</a></td>
+            <td align="center"><a href="#">Tentang</a></td>
+            <td align="center"><a href="#">Biodata</a></td>
+            <td align="center"><a href="#">Portofolio</a></td>
+        </tr>
+    </table>
+    <br>
+    
+    <!-- Section 2: Judul di kiri, gambar di kanan -->
+    <table border="1" width="100%">
+        <tr>
+            <td width="50%" align="center">
+                <h2>Judul Section</h2>
+                <p>Deskripsi singkat tentang section ini.</p>
+            </td>
+            <td width="50%" align="center">
+                <img src="https://via.placeholder.com/150" alt="Gambar Contoh">
+            </td>
+        </tr>
+    </table>
+    <br>
+    
+    <!-- Section 3: Biodata dengan 6 box -->
+    <table border="1" width="100%">
+        <tr>
+            <td align="center">Nama</td>
+            <td align="center">Usia</td>
+            <td align="center">Alamat</td>
+        </tr>
+        <tr>
+            <td align="center">Pekerjaan</td>
+            <td align="center">Hobi</td>
+            <td align="center">Kontak</td>
+        </tr>
+    </table>
+    <br>
+    
     <!-- Section 4: Portofolio -->
-    <section class="section" id="portfolio">
-        <h2>Portofolio</h2>
-        <table>
-            <tr>
-                <th>Proyek</th>
-                <th>Deskripsi</th>
-                <th>Tahun</th>
-            </tr>
-            <tr>
-                <td>Website A</td>
-                <td>Website perusahaan teknologi</td>
-                <td>2025</td>
-            </tr>
-            <tr>
-                <td>Aplikasi B</td>
-                <td>Aplikasi mobile untuk bisnis</td>
-                <td>2022</td>
-            </tr>
-            <tr>
-                <td>Website C</td>
-                <td>Portal berita online</td>
-                <td>2021</td>
-            </tr>
-        </table>
-    </section>
+    <table border="1" width="100%">
+        <tr>
+            <td colspan="2" align="center"><h2>Portofolio</h2></td>
+        </tr>
+        <tr>
+            <td align="center"><img src="https://via.placeholder.com/100" alt="Proyek 1"><br>Proyek 1</td>
+            <td align="center"><img src="https://via.placeholder.com/100" alt="Proyek 2"><br>Proyek 2</td>
+        </tr>
+        <tr>
+            <td align="center"><img src="https://via.placeholder.com/100" alt="Proyek 3"><br>Proyek 3</td>
+            <td align="center"><img src="https://via.placeholder.com/100" alt="Proyek 4"><br>Proyek 4</td>
+        </tr>
+    </table>
 </body>
 </html>
