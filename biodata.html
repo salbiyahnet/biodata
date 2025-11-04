@@ -1,62 +1,511 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>Halaman Dengan Tabel</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Profesional - Aurora Pradana</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gradient-bg: linear-gradient(135deg, #5f2c82 0%, #49a09d 100%);
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --primary: #5f2c82;
+            --accent: #49a09d;
+            --text-primary: #1f1f1f;
+            --text-muted: #555555;
+            --shadow-soft: 0 20px 55px rgba(31, 31, 31, 0.12);
+            --shadow-hover: 0 25px 70px rgba(31, 31, 31, 0.18);
+            --radius-lg: 26px;
+            --radius-md: 18px;
+            --radius-sm: 12px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-primary);
+            background: var(--gradient-bg);
+        }
+
+        .page-wrapper {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 32px 18px 48px;
+        }
+
+        .content {
+            max-width: 1080px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        header {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 32px;
+            box-shadow: var(--shadow-soft);
+            backdrop-filter: blur(20px);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            font-size: 1.05rem;
+            color: var(--primary);
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            transition: color 0.25s ease, transform 0.25s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .contact-btn {
+            border: none;
+            background: var(--primary);
+            color: #ffffff;
+            padding: 10px 18px;
+            border-radius: var(--radius-sm);
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            box-shadow: 0 14px 30px rgba(95, 44, 130, 0.25);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        main {
+            margin-top: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .hero {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 48px 42px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            align-items: center;
+            gap: 36px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .hero-text h1 {
+            margin: 0 0 12px;
+            font-size: clamp(2.35rem, 2vw + 1.8rem, 3.2rem);
+            line-height: 1.15;
+        }
+
+        .hero-text p {
+            margin: 0 0 20px;
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.75;
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .hero-meta div {
+            background: rgba(73, 160, 157, 0.2);
+            color: var(--accent);
+            border-radius: 999px;
+            padding: 8px 18px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .hero-photo {
+            position: relative;
+            width: min(320px, 80%);
+            justify-self: center;
+        }
+
+        .hero-photo::before {
+            content: "";
+            position: absolute;
+            inset: -18px -18px -30px;
+            border-radius: 60% 40% 60% 40% / 40% 60% 40% 60%;
+            background: rgba(95, 44, 130, 0.15);
+            filter: blur(0px);
+            z-index: 0;
+        }
+
+        .hero-photo img {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 45% 55% 60% 40%;
+            box-shadow: var(--shadow-soft);
+            border: 6px solid #ffffff;
+            z-index: 1;
+        }
+
+        .social-links {
+            margin-top: 26px;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            background: rgba(95, 44, 130, 0.1);
+            color: var(--primary);
+            padding: 10px 16px;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: transform 0.25s ease, background 0.25s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-2px);
+            background: rgba(95, 44, 130, 0.18);
+        }
+
+        section {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 38px 42px;
+            box-shadow: var(--shadow-soft);
+        }
+
+        section h2 {
+            margin: 0 0 20px;
+            font-size: 1.8rem;
+        }
+
+        .about p {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .facts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 22px;
+        }
+
+        .fact-card {
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            box-shadow: 0 16px 30px rgba(73, 160, 157, 0.12);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .fact-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .fact-card span {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--accent);
+        }
+
+        .fact-card strong {
+            font-size: 1.1rem;
+        }
+
+        .fact-card p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 22px;
+        }
+
+        .project-card {
+            background: #ffffff;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 18px 36px rgba(95, 44, 130, 0.14);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 170px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 22px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .project-content span {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--primary);
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .project-content h3 {
+            margin: 0;
+            font-size: 1.1rem;
+        }
+
+        .project-content p {
+            margin: 0;
+            color: var(--text-muted);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        footer {
+            margin-top: 42px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        @media (max-width: 680px) {
+            header {
+                flex-direction: column;
+                gap: 18px;
+                text-align: center;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                padding: 38px 32px;
+            }
+
+            section {
+                padding: 32px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-wrapper {
+                padding: 24px 14px 38px;
+            }
+
+            .hero {
+                padding: 32px 26px;
+            }
+
+            .hero-meta {
+                gap: 12px;
+            }
+
+            .hero-meta div {
+                padding: 6px 14px;
+            }
+
+            .social-links a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Section 1: Menu -->
-    <table border="1" width="100%">
-        <tr>
-            <td align="center"><a href="#">Home</a></td>
-            <td align="center"><a href="#">Tentang</a></td>
-            <td align="center"><a href="#">Biodata</a></td>
-            <td align="center"><a href="#">Portofolio</a></td>
-        </tr>
-    </table>
-    <br>
-    
-    <!-- Section 2: Judul di kiri, gambar di kanan -->
-    <table border="1" width="100%">
-        <tr>
-            <td width="50%" align="center">
-                <h2>Judul Section</h2>
-                <p>Deskripsi singkat tentang section ini.</p>
-            </td>
-            <td width="50%" align="center">
-                <img src="https://via.placeholder.com/150" alt="Gambar Contoh">
-            </td>
-        </tr>
-    </table>
-    <br>
-    
-    <!-- Section 3: Biodata dengan 6 box -->
-    <table border="1" width="100%">
-        <tr>
-            <td align="center">Nama</td>
-            <td align="center">Usia</td>
-            <td align="center">Alamat</td>
-        </tr>
-        <tr>
-            <td align="center">Pekerjaan</td>
-            <td align="center">Hobi</td>
-            <td align="center">Kontak</td>
-        </tr>
-    </table>
-    <br>
-    
-    <!-- Section 4: Portofolio -->
-    <table border="1" width="100%">
-        <tr>
-            <td colspan="2" align="center"><h2>Portofolio</h2></td>
-        </tr>
-        <tr>
-            <td align="center"><img src="https://via.placeholder.com/100" alt="Proyek 1"><br>Proyek 1</td>
-            <td align="center"><img src="https://via.placeholder.com/100" alt="Proyek 2"><br>Proyek 2</td>
-        </tr>
-        <tr>
-            <td align="center"><img src="https://via.placeholder.com/100" alt="Proyek 3"><br>Proyek 3</td>
-            <td align="center"><img src="https://via.placeholder.com/100" alt="Proyek 4"><br>Proyek 4</td>
-        </tr>
-    </table>
+    <div class="page-wrapper">
+        <div class="content">
+            <header>
+                <div class="logo">Aurora Pradana</div>
+                <nav>
+                    <a href="#tentang">Tentang</a>
+                    <a href="#pengalaman">Pengalaman</a>
+                    <a href="#portofolio">Portofolio</a>
+                    <a href="#kontak">Kontak</a>
+                </nav>
+                <button class="contact-btn">Hubungi Saya</button>
+            </header>
+
+            <main>
+                <section class="hero" id="atas">
+                    <div class="hero-text">
+                        <h1>Desainer UX yang Merancang Pengalaman Digital Penuh Makna</h1>
+                        <p>Saya Aurora Pradana, desainer pengalaman pengguna yang fokus pada storytelling visual dan solusi berbasis empati. Selama 6+ tahun terakhir saya membantu brand teknologi menghadirkan produk digital yang intuitif, fungsional, sekaligus manusiawi.</p>
+                        <div class="hero-meta">
+                            <div>Jakarta, Indonesia</div>
+                            <div>Terbuka untuk kerja remote</div>
+                            <div>Menerima kolaborasi produk</div>
+                        </div>
+                        <div class="social-links">
+                            <a href="#">LinkedIn</a>
+                            <a href="#">Behance</a>
+                            <a href="#">Dribbble</a>
+                            <a href="#kontak">Email Saya</a>
+                        </div>
+                    </div>
+                    <div class="hero-photo">
+                        <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=900&q=80" alt="Foto profil Aurora Pradana">
+                    </div>
+                </section>
+
+                <section class="about" id="tentang">
+                    <h2>Tentang Aurora</h2>
+                    <p>Aurora adalah desainer UX/UI yang menggabungkan riset mendalam dengan visual storytelling. Dengan latar belakang psikologi dan desain grafis, ia memimpin tim produk lintas disiplin dalam merancang aplikasi finansial, platform edukasi, hingga solusi SaaS. Aurora percaya bahwa desain terbaik lahir dari memahami manusia yang menggunakan produk tersebut.</p>
+                </section>
+
+                <section id="pengalaman">
+                    <h2>Highlight & Pengalaman</h2>
+                    <div class="facts-grid">
+                        <article class="fact-card">
+                            <span>Pengalaman</span>
+                            <strong>6+ tahun di industri UX/UI</strong>
+                            <p>Memimpin desain end-to-end untuk startup teknologi skala Asia Tenggara dengan fokus pada produk finansial.</p>
+                        </article>
+                        <article class="fact-card">
+                            <span>Keahlian Utama</span>
+                            <strong>UX Research & Design Systems</strong>
+                            <p>Dari studi lapangan, prototyping tinggi, hingga membangun sistem desain adaptif yang dapat diskalakan.</p>
+                        </article>
+                        <article class="fact-card">
+                            <span>Pencapaian</span>
+                            <strong>IDX Tech Awards 2023</strong>
+                            <p>Timnya meraih penghargaan karena meningkatkan retensi produk sebesar 38% dalam 6 bulan.</p>
+                        </article>
+                        <article class="fact-card">
+                            <span>Hobi</span>
+                            <strong>Fotografi & Storytelling</strong>
+                            <p>Menjelajah kota dan mengabadikan momen yang kemudian menjadi inspirasi desain.</p>
+                        </article>
+                    </div>
+                </section>
+
+                <section id="portofolio">
+                    <h2>Portofolio Pilihan</h2>
+                    <div class="portfolio-grid">
+                        <article class="project-card">
+                            <img src="https://images.unsplash.com/photo-1587613863544-7acbfcf0b776?auto=format&fit=crop&w=900&q=80" alt="Tampilan aplikasi keuangan">
+                            <div class="project-content">
+                                <span>Fintech Platform</span>
+                                <h3>Desain Aplikasi Keuangan Holistik</h3>
+                                <p>Menciptakan pengalaman tabungan dan investasi dengan personalisasi cerdas dan penjelajan yang mudah.</p>
+                            </div>
+                        </article>
+                        <article class="project-card">
+                            <img src="https://images.unsplash.com/photo-1531498860502-7c67cf02f77b?auto=format&fit=crop&w=900&q=80" alt="Dashboard analytics">
+                            <div class="project-content">
+                                <span>Data Visualisation</span>
+                                <h3>Dashboard Analitik Interaktif</h3>
+                                <p>Menerjemahkan data kompleks menjadi visualisasi yang intuitif untuk tim marketing dan penjualan.</p>
+                            </div>
+                        </article>
+                        <article class="project-card">
+                            <img src="https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=900&q=80" alt="Antarmuka aplikasi edukasi">
+                            <div class="project-content">
+                                <span>EdTech Experience</span>
+                                <h3>Platform Belajar Generasi Z</h3>
+                                <p>Merancang perjalanan belajar personal yang meningkatkan engagement siswa hingga 45%.</p>
+                            </div>
+                        </article>
+                        <article class="project-card">
+                            <img src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92eee?auto=format&fit=crop&w=900&q=80" alt="Mockup aplikasi mobile">
+                            <div class="project-content">
+                                <span>Product Strategy</span>
+                                <h3>Design Sprint untuk Produk Baru</h3>
+                                <p>Memimpin design sprint 5 hari yang menghasilkan MVP siap uji dengan 3 fitur prioritas.</p>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+
+                <section id="kontak">
+                    <h2>Hubungi Aurora</h2>
+                    <div class="facts-grid">
+                        <article class="fact-card">
+                            <span>Email</span>
+                            <strong>hello@aurorapradana.com</strong>
+                            <p>Silakan kirimkan pesan terkait kolaborasi, konsultasi desain, atau undangan berbicara.</p>
+                        </article>
+                        <article class="fact-card">
+                            <span>Lokasi</span>
+                            <strong>Jakarta & Remote</strong>
+                            <p>Tersedia untuk pertemuan daring maupun tatap muka di area Jakarta dan sekitarnya.</p>
+                        </article>
+                        <article class="fact-card">
+                            <span>Preferensi</span>
+                            <strong>Proyek berdampak sosial</strong>
+                            <p>Tertarik pada produk yang memajukan pendidikan, kesehatan, dan inklusivitas digital.</p>
+                        </article>
+                        <article class="fact-card">
+                            <span>Waktu Respons</span>
+                            <strong>48 jam kerja</strong>
+                            <p>Biasanya merespons email dalam waktu dua hari kerja atau lebih cepat untuk urgensi tinggi.</p>
+                        </article>
+                    </div>
+                </section>
+            </main>
+
+            <footer>
+                © 2025 Aurora Pradana · Dibangun dengan empati dan desain yang bermakna · <a href="#atas">Kembali ke atas</a>
+            </footer>
+        </div>
+    </div>
 </body>
 </html>
